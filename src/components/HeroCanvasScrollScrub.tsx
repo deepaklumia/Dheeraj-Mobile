@@ -149,8 +149,9 @@ export default function HeroCanvasScrollScrub() {
           />
         )}
 
-        {/* Ambient Dark Overlay Gradients (Subtle bottom shadow only for transition) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none z-10" />
+        {/* Ambient Dark Overlay Gradients for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 pointer-events-none z-10" />
 
       </div>
     </div>

@@ -177,7 +177,7 @@ export default function CanvasScrollScrub() {
           <>
             {/* Step 1 Text Overlay: Active around 0% - 30% scroll */}
             <motion.div 
-              className="absolute left-6 md:left-24 max-w-lg p-6 md:p-8 rounded-2xl glass-panel text-left flex flex-col space-y-4"
+              className="absolute left-6 right-6 md:left-24 md:right-auto md:max-w-lg p-5 md:p-8 rounded-2xl glass-panel text-left flex flex-col space-y-4"
               style={{
                 opacity: opacityStep1,
                 y: yStep1
@@ -194,7 +194,7 @@ export default function CanvasScrollScrub() {
 
             {/* Step 2 Text Overlay: Active around 35% - 65% scroll */}
             <motion.div 
-              className="absolute right-6 md:right-24 max-w-lg p-6 md:p-8 rounded-2xl glass-panel text-left flex flex-col space-y-4"
+              className="absolute left-6 right-6 md:left-auto md:right-24 md:max-w-lg p-5 md:p-8 rounded-2xl glass-panel text-left flex flex-col space-y-4"
               style={{
                 opacity: opacityStep2,
                 y: yStep2
@@ -211,7 +211,7 @@ export default function CanvasScrollScrub() {
 
             {/* Step 3 Text Overlay: Active around 70% - 95% scroll */}
             <motion.div 
-              className="absolute left-6 md:left-24 max-w-lg p-6 md:p-8 rounded-2xl glass-panel text-left flex flex-col space-y-4"
+              className="absolute left-6 right-6 md:left-24 md:right-auto md:max-w-lg p-5 md:p-8 rounded-2xl glass-panel text-left flex flex-col space-y-4"
               style={{
                 opacity: opacityStep3,
                 y: yStep3

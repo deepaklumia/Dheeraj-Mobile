@@ -6,6 +6,29 @@ export default function BeforeAfterSlider() {
   const [sliderPosition, setSliderPosition] = useState(50); // percentage (0 to 100)
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 800, height: 450 });
+
+  // Update dimensions dynamically on mount and window resize
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        setDimensions({
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight
+        });
+      }
+    };
+
+    updateDimensions();
+    // Trigger double check after short timeout to ensure container is fully laid out
+    const timer = setTimeout(updateDimensions, 100);
+
+    window.addEventListener('resize', updateDimensions);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const handleMove = (clientX: number) => {
     const container = containerRef.current;
@@ -74,11 +97,10 @@ export default function BeforeAfterSlider() {
           <img 
             src={beforeImage} 
             alt="After repair - Restored" 
-            // We set width to the parent container's bounding width dynamically
             className="absolute top-0 right-0 object-cover filter saturate-110 select-none max-w-none"
             style={{ 
-              width: containerRef.current?.getBoundingClientRect().width || '100%', 
-              height: containerRef.current?.getBoundingClientRect().height || '100%' 
+              width: `${dimensions.width}px`, 
+              height: `${dimensions.height}px` 
             }}
           />
           {/* Label */}
