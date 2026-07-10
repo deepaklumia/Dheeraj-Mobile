@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useScroll, useTransform, motion, useMotionValueEvent } from 'framer-motion';
 
 const TOTAL_FRAMES = 31;
@@ -17,7 +17,7 @@ export default function CanvasScrollScrub() {
 
     const loadImages = async () => {
       const promises = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
-        return new Promise<void>((resolve, reject) => {
+        return new Promise<void>((resolve) => {
           const img = new Image();
           // Frame names are frame_001.png, frame_002.png...
           const frameNum = String(i + 1).padStart(3, '0');

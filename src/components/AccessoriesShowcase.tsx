@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Zap, 
@@ -101,14 +101,6 @@ const ACCESSORIES: AccessoryProduct[] = [
 
 export default function AccessoriesShowcase() {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [scrollWidth, setScrollWidth] = useState(0);
-  const [currentScroll, setCurrentScroll] = useState(0);
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      setScrollWidth(sliderRef.current.scrollWidth - sliderRef.current.offsetWidth);
-    }
-  }, []);
 
   const handleScroll = (direction: 'left' | 'right') => {
     const slider = sliderRef.current;

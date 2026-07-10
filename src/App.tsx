@@ -15,9 +15,7 @@ import {
   Phone,
   Clock,
   CheckCircle2,
-  ChevronDown,
   Wrench,
-  Shield,
   Menu,
   X
 } from 'lucide-react';
@@ -31,7 +29,6 @@ import RepairTimeline from './components/RepairTimeline';
 import CounterTrust from './components/CounterTrust';
 
 // Assets
-import heroImage from './assets/hero_shop.png';
 import servicesImage from './assets/services_exploded.png';
 import contactImage from './assets/contact_night.png';
 
@@ -177,7 +174,7 @@ export default function App() {
 
         {/* ==================== 2. HERO SECTION ==================== */}
         <div id="hero">
-          <HeroCanvasScrollScrub handleNavClick={handleNavClick} />
+          <HeroCanvasScrollScrub />
         </div>
 
         {/* ==================== 3. ABOUT SECTION (CANVAS SCROLL SCRUB) ==================== */}

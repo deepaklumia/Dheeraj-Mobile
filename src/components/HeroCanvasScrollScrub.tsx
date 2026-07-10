@@ -1,14 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useScroll, useTransform, motion, useMotionValueEvent } from 'framer-motion';
-import { Shield, MapPin, ChevronDown } from 'lucide-react';
+import { useRef, useEffect, useState } from 'react';
+import { useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 
 const TOTAL_HERO_FRAMES = 101;
 
-interface HeroCanvasScrollScrubProps {
-  handleNavClick: (sectionId: string) => void;
-}
-
-export default function HeroCanvasScrollScrub({ handleNavClick }: HeroCanvasScrollScrubProps) {
+export default function HeroCanvasScrollScrub() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
@@ -55,15 +50,6 @@ export default function HeroCanvasScrollScrub({ handleNavClick }: HeroCanvasScro
 
   // Map scroll progress (0 to 1) to image index (0 to 100)
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, TOTAL_HERO_FRAMES - 1]);
-
-  // Text overlay transforms (fade out and scale down as you scroll down)
-  const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.6], [1, 0, 0]);
-  const textScale = useTransform(scrollYProgress, [0, 0.4], [1, 0.95]);
-  const textY = useTransform(scrollYProgress, [0, 0.4], [0, -30]);
-
-  // Ambient subtitle reveal (fades in as hero fades out, then fades away)
-  const secondaryOpacity = useTransform(scrollYProgress, [0.35, 0.6, 0.85], [0, 1, 0]);
-  const secondaryY = useTransform(scrollYProgress, [0.35, 0.6, 0.85], [40, 0, -40]);
 
   // Handle canvas drawing logic
   const drawImage = (index: number) => {
